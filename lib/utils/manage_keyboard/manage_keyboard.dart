@@ -4,7 +4,7 @@ class ManageKeyboard {
    static void hideKeyboad(BuildContext context){
      FocusScopeNode currentFocus = FocusScope.of(context);
 
-     if(currentFocus.hasPrimaryFocus){
+     if(!currentFocus.hasPrimaryFocus){
        currentFocus.unfocus();
      }
    }

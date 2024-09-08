@@ -13,4 +13,5 @@ abstract class AppStrings {
    static const userName = "User Name";
    static const phone = "Phone";
    static const city = "City";
+   static const pleaseWait = "Please wait...";
 }
