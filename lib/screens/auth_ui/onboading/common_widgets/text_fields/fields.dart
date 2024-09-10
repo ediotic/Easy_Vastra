@@ -9,6 +9,8 @@ class Fields extends StatelessWidget {
   final IconData prefixIcon;
   final IconData? suffixIcon;             // Optional suffix icon
   final Color cursorColor;
+  final bool obscureText;
+  final VoidCallback ?onTap;
   final EdgeInsetsGeometry? contentPadding;
   final TextEditingController? controller;
 
@@ -22,6 +24,8 @@ class Fields extends StatelessWidget {
     this.contentPadding,
     // this.hintStyle,
     this.controller,
+    this.onTap,
+    this.obscureText = false,
   }) : super(key: key);
 
   @override
@@ -34,6 +38,7 @@ class Fields extends StatelessWidget {
         child: TextFormField(
           controller: controller,
           cursorColor: cursorColor,
+          obscureText: obscureText,
           keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hintText,
@@ -43,10 +48,13 @@ class Fields extends StatelessWidget {
               color: cursorColor,
             ),
             suffixIcon: suffixIcon != null // Show suffix icon only if provided
-                ? Icon(
-                    suffixIcon,
-                    color: cursorColor,
-                  )
+                ? GestureDetector(
+                  onTap: onTap,
+                  child: Icon(
+                      suffixIcon,
+                      color: cursorColor,
+                    ),
+                )
                 : null,
             contentPadding: contentPadding ?? const EdgeInsets.only(top: 2.0, left: 8.0),
             border: OutlineInputBorder(

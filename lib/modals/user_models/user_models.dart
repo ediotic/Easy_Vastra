@@ -8,6 +8,7 @@ class UserModels {
   final String country;
   final String userAddress;
   final String street;
+  final String city;
   final bool isAdmin;
   final bool isActive;
   final dynamic createdOn;
@@ -22,6 +23,7 @@ class UserModels {
     required this.country,
     required this.userAddress,
     required this.street,
+    required this.city,
     required this.isAdmin,
     required this.isActive,
     required this.createdOn,
@@ -57,6 +59,7 @@ class UserModels {
       country: json['country'],
       userAddress: json['userAddress'],
       street: json['street'],
+      city: json['city'],
       isAdmin: json['isAdmin'],
       isActive: json['isActive'],
       createdOn: json['createdOn'].toString(),

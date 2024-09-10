@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import '../../../../controllers/google_sign_in/google_sign_in.dart';
 import '../../../../utils/constants/app_constants.dart';
 import '../../../../utils/strings/app_strings.dart';
+import '../sign_in/sign_in_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({super.key});
@@ -79,7 +80,9 @@ class WelcomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.5),
                 ),
                 child: TextButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const SignInScreen());
+                  },
                   icon: const Icon(
                     Icons.email_sharp,
                     color: AppConstants.appTextColor,
