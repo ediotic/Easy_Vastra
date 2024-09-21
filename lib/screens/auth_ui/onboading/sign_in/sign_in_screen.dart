@@ -1,11 +1,15 @@
 
 
+// ignore_for_file: unnecessary_null_comparison
+
+import 'package:easy_vastra/screens/admin_panel/admin_main_/admin_main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../../controllers/get_user_data/get_user_data_controller.dart';
 import '../../../../controllers/sign_in_controller/sign_in_controller.dart';
 import '../../../../utils/constants/app_constants.dart';
 import '../../../../utils/strings/app_strings.dart';
@@ -23,6 +27,7 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   final SignInController signInController = Get.put(SignInController());
+  final GetUserDataController getUserDataController = Get.put(GetUserDataController());
   TextEditingController userEmail = TextEditingController();
   TextEditingController userPassword = TextEditingController();
   @override
@@ -32,6 +37,7 @@ class _SignInScreenState extends State<SignInScreen> {
         backgroundColor: AppConstants.appBgColor,
         appBar: AppBar(
           backgroundColor: AppConstants.appMainColor,
+          centerTitle: true,
           title: const Text(
             AppStrings.signIn,
             style: TextStyle(
@@ -127,16 +133,32 @@ class _SignInScreenState extends State<SignInScreen> {
                       } else{
                         UserCredential? userCredential = await signInController.signInMethod(email, password);
 
+                        var userData = await getUserDataController.getUserData(userCredential!.user!.uid);
+
                          if(userCredential != null){
                            if(userCredential.user!.emailVerified){
-                              Get.snackbar(
-                              AppStrings.success,
+                             if(userData[0]['isAdmin'] == true){
+                               Get.offAll(() => const AdminMainScreen() );
+                                  Get.snackbar(
+                              AppStrings.successAdminLogin,
                               AppStrings.loginSuccess,
                               snackPosition: SnackPosition.BOTTOM,
                               backgroundColor: AppConstants.appSecondaryColor,
                               colorText: AppConstants.appTextColor,
                               borderColor: AppConstants.appMainColor,
                             );
+                             }else{
+                               Get.offAll(() => const MainScreen() );
+                                   Get.snackbar(
+                              AppStrings.successUserLogin,
+                              AppStrings.loginSuccess,
+                              snackPosition: SnackPosition.BOTTOM,
+                              backgroundColor: AppConstants.appSecondaryColor,
+                              colorText: AppConstants.appTextColor,
+                              borderColor: AppConstants.appMainColor,
+                            );
+                             }
+                           
                             Get.offAll(() => const MainScreen());
 
                            }else{

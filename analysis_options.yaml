@@ -10,6 +10,7 @@
 analyzer:
   errors:
     body_might_complete_normally_nullable: ignore
+    avoid_print: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

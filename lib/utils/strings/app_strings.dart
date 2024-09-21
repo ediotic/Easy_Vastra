@@ -21,8 +21,24 @@ abstract class AppStrings {
    static const pleaseVerify = "Please verify your email.";
    static const pleaseTryAgain = "Please try again";
    static const success= "Success.";
+   static const successAdminLogin= "Success Admin Login.";
+   static const successUserLogin= "Success User Login.";
    static const loginSuccess= "Login Successfully!";
    static const requestSent= "Request sent Successfully!";
    static const passwordLinkSent= "Password reset link sent to";
    static const forget = "Forget";
+   static const ediotic = "Ediotic";
+   static const version = "Version 1.0.0";
+   static const idName = "E";
+   static const home = "Home";
+   static const products = "Products";
+   static const allProducts = "All Products";
+   static const logout = "Logout";
+   static const flashSale = "Flash Sale";
+   static const orders = "Orders";
+   static const contact = "Contact";
+   static const categories = "Categories";
+   static const allCategories = " All Categories";
+   static const accordingToBudget= "According to your Budget";
+   static const seeMoreArrow = "See more >";
 }

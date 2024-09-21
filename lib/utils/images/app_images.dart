@@ -1,1 +1,3 @@
-abstract class AppImages {}
+abstract class AppImages {
+  // static const launcherIcon = ;
+}
